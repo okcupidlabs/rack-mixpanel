@@ -1,12 +1,15 @@
 # Rack::Mixpanel
 
-TODO: Write a gem description
+Rack::Mixpanel provides a piece of Rack middleware for tracking events with
+the same identity as set in the client-side JavaScript API. This is
+achieved through parsing the cookie that Mixpanel sets on your site's
+domain.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'rack-mixpanel'
+    gem 'rack-mixpanel', :require => 'rack/mixpanel'
 
 And then execute:
 
@@ -16,9 +19,37 @@ Or install it yourself as:
 
     $ gem install rack-mixpanel
 
+### Rails
+
+In your config/application.rb:
+
+```
+config.middleware.use Rack::Mixpanel
+```
+
+This will use the "MIXPANEL_API_TOKEN" environment variable as the
+Mixpanel API token.
+
+Alternatively, you may set this explicitly:
+
+```
+config.middleware.use Rack::Mixpanel, '54c0b5d418d4215a1061a894736eeed9'
+```
+
 ## Usage
 
-TODO: Write usage instructions here
+### Track events
+
+```ruby
+env['mixpanel.tracker'].track event_name, properties
+```
+
+Example:
+
+```ruby
+env['mixpanel.tracker'].track 'Sent message', {:age => 25,
+:recipient_age => 23}
+```
 
 ## Contributing
 

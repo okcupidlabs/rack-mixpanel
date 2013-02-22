@@ -1,4 +1,4 @@
-# Rack::Mixpanel
+# Rack::Mixpanel [![Build Status](https://travis-ci.org/okcwest/rack-mixpanel.png?branch=master)](https://travis-ci.org/okcwest/rack-mixpanel)
 
 Rack::Mixpanel provides a piece of Rack middleware for tracking events with
 the same identity as set in the client-side JavaScript API. This is
